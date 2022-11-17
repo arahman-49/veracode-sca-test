@@ -81,6 +81,9 @@ export function runAction (options: Options)  {
         core.info('Finish command');
         
     } catch (error) {
+		if (error.stderr) {
+			console.log(error.stderr);
+		}			
         if (error instanceof Error) {
             core.setFailed(error.message);
         } else {
@@ -116,4 +119,3 @@ const collectors = [
 "dll",
 "msbuilddotnet",
 ]
-
